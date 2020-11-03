@@ -1,0 +1,17 @@
+footer {
+  position: absolute;
+  bottom: 33px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+footer h3 {
+  font-family: Karla;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  color: #212121;
+}

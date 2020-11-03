@@ -1,4 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla&display=swap');
+
+*,
+*:after,
+*:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style-type: none;
+}
+
 body {
-  min-height: 10vh;
+  height: 100vh;
   background: linear-gradient(180deg, #f5db13 0%, #f2b807 100%);
+  position: relative;
 }
