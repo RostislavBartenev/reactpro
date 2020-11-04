@@ -1,15 +1,9 @@
 import React from 'react';
 
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
+import HomePage from './pages/Home';
 
 const App = () => {
-  return (
-    <>
-      <Header />
-      <Footer />
-    </>
-  );
+  return <HomePage />;
 };
 
 export default App;
