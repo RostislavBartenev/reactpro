@@ -1,4 +1,6 @@
-import * as React from 'react';
+import React from 'react';
+
+import { Link } from 'react-router-dom';
 
 import style from './Header.module.scss';
 import { ReactComponent as PokemonLogoSvg } from './assets/Logo.svg';
@@ -18,7 +20,7 @@ const MENU: iMenu[] = [
   {
     id: 2,
     value: 'Pokédex',
-    link: '/',
+    link: '/pokedex',
   },
   {
     id: 3,
@@ -41,9 +43,9 @@ const Header = () => {
         </div>
         <div className={style.menuWrap}>
           {MENU.map(({ value, link, id }) => (
-            <a key={id} href={link} className={style.menuLink}>
+            <Link key={id} to={link} className={style.menuLink}>
               {value}
-            </a>
+            </Link>
           ))}
         </div>
       </div>

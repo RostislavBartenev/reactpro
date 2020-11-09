@@ -4,11 +4,12 @@ footer {
   left: 0;
   right: 0;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  max-width: 1125px;
+  margin: 0 auto;
 }
 
 footer h3 {
-  font-family: Karla;
   font-style: normal;
   font-weight: bold;
   font-size: 18px;
