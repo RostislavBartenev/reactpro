@@ -1,19 +1,23 @@
 import React from 'react';
 
+import cn from 'classnames';
+
 import style from './Button.module.scss';
 
 interface ButtonProps {
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  buttonStyle: {
-    width: string;
-    backgroundColor: string;
-    fontSize: string;
-  };
+  type?: string;
 }
 
-const Button: React.FC<ButtonProps> = ({ children, onClick, buttonStyle }) => {
+const Button: React.FC<ButtonProps> = ({ children, onClick, type }) => {
   return (
-    <button style={{ ...buttonStyle }} type="submit" className={style.root} onClick={onClick}>
+    <button
+      type="submit"
+      className={cn(
+        // eslint-disable-next-line no-nested-ternary
+        type === undefined ? cn(style.root, style.primary) : type === 'third' ? cn(style.root, style.third) : '',
+      )}
+      onClick={onClick}>
       {children}
     </button>
   );

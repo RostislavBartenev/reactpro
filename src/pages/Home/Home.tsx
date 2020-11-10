@@ -8,12 +8,6 @@ import Button from '../../components/Button/Button';
 import Parallax from '../../components/Parallax/Parallax';
 
 const HomePage = () => {
-  const buttonStyle = {
-    width: '100%',
-    backgroundColor: 'yellow',
-    fontSize: '10px',
-  };
-
   return (
     <div className={style.root}>
       <Header />
@@ -23,9 +17,7 @@ const HomePage = () => {
             <b>Find</b> all your favorite <b>Pokemon</b>
           </h1>
           <p>You can know the type of Pokemon, its strengths, disadvantages and abilities</p>
-          <Button buttonStyle={buttonStyle} onClick={() => console.log('123')}>
-            See pokemons
-          </Button>
+          <Button onClick={() => console.log('123')}>See pokemons</Button>
         </div>
         <div className={style.contentParallax}>
           <Parallax />

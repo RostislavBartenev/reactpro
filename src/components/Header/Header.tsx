@@ -1,40 +1,16 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom';
+import { A, usePath } from 'hookrouter';
+
+import cn from 'classnames';
 
 import style from './Header.module.scss';
 import { ReactComponent as PokemonLogoSvg } from './assets/Logo.svg';
-
-interface iMenu {
-  id: number;
-  value: string;
-  link: string;
-}
-
-const MENU: iMenu[] = [
-  {
-    id: 1,
-    value: 'Home',
-    link: '/',
-  },
-  {
-    id: 2,
-    value: 'Pokédex',
-    link: '/pokedex',
-  },
-  {
-    id: 3,
-    value: 'Legendaries',
-    link: '/',
-  },
-  {
-    id: 4,
-    value: 'Documentation',
-    link: '/',
-  },
-];
+import { GENERAL_MENU } from '../../routes';
 
 const Header = () => {
+  const path = usePath();
+
   return (
     <div className={style.root}>
       <div className={style.wrap}>
@@ -42,10 +18,10 @@ const Header = () => {
           <PokemonLogoSvg />
         </div>
         <div className={style.menuWrap}>
-          {MENU.map(({ value, link, id }) => (
-            <Link key={id} to={link} className={style.menuLink}>
-              {value}
-            </Link>
+          {GENERAL_MENU.map(({ title, link }) => (
+            <A key={title} href={link} className={cn(style.menuLink, { [style.activeLink]: link === path })}>
+              {title}
+            </A>
           ))}
         </div>
       </div>
