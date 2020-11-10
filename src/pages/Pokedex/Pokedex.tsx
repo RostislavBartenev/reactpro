@@ -2,6 +2,8 @@ import React from 'react';
 import PokemonCard from '../../components/PokemonCard/PokemonCard';
 import Header from '../../components/Header/Header';
 
+import style from './Pokedex.module.scss';
+
 const pokemons = [
   {
     name_clean: 'bulbasaur',
@@ -219,16 +221,18 @@ const Pokedex = () => {
   return (
     <>
       <Header />
-      {pokemons.map((pokemon) => (
-        <PokemonCard
-          key={pokemon.id}
-          name={pokemon.name}
-          attack={pokemon.stats.attack}
-          defense={pokemon.stats.defense}
-          types={pokemon.types}
-          image={pokemon.img}
-        />
-      ))}
+      <div className={style.wrap}>
+        {pokemons.map((pokemon) => (
+          <PokemonCard
+            key={pokemon.id}
+            name={pokemon.name}
+            attack={pokemon.stats.attack}
+            defense={pokemon.stats.defense}
+            types={pokemon.types}
+            image={pokemon.img}
+          />
+        ))}
+      </div>
     </>
   );
 };

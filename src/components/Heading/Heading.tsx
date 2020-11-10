@@ -2,13 +2,12 @@ import React from 'react';
 
 interface HeadingProps {
   tag: string;
-  classNames: string;
 }
 
-const Heading: React.FC<HeadingProps> = ({ children, tag, classNames }) => {
+const Heading: React.FC<HeadingProps> = ({ children, tag }) => {
   const HeadingTag: any = tag;
 
-  return <HeadingTag classNames={classNames}>{children}</HeadingTag>;
+  return <HeadingTag>{children}</HeadingTag>;
 };
 
 export default Heading;
