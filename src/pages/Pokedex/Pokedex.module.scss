@@ -1,0 +1,6 @@
+.wrap {
+  display: grid;
+  width: 1125px;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 60px auto 0;
+}
