@@ -3,12 +3,20 @@ import PokemonCard from '../../components/PokemonCard/PokemonCard';
 
 import style from './Pokedex.module.scss';
 import useData from '../../hook/getData';
+import { IPokemons, PokemonsRequest } from '../../interface/pokemons';
+import useDebounce from '../../hook/useDebounce';
+
+interface IQuery {
+  name?: string;
+}
 
 const Pokedex = () => {
   const [searchValue, setSearchValue] = useState('');
-  const [query, setQuery] = useState({});
+  const [query, setQuery] = useState<IQuery>({});
 
-  const { data, isError, isLoading } = useData('getPokemons', query, [searchValue]);
+  const debouncedValue = useDebounce(searchValue, 500);
+
+  const { data, isError, isLoading } = useData<IPokemons>('getPokemons', query, [debouncedValue]);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -20,8 +28,8 @@ const Pokedex = () => {
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
-    setQuery((s) => ({
-      ...s,
+    setQuery((state: IQuery) => ({
+      ...state,
       name: e.target.value,
     }));
   };
@@ -29,24 +37,18 @@ const Pokedex = () => {
   return (
     <>
       <h1 className={style.title}>
-        {data.total} <b>Pokemons</b> for you to choose your favorite
+        {data && data.total} <b>Pokemons</b> for you to choose your favorite
       </h1>
       <input
         className={style.search}
-        placeholder="Encuentra tu pokémon..."
+        placeholder="Find your pokemon..."
         type="text"
         value={searchValue}
         onChange={handleSearchChange}
       />
       <div className={style.wrap}>
-        {data.pokemons.map(
-          (pokemon: {
-            id: string;
-            name: string;
-            stats: { attack: string; defense: string };
-            types: string[];
-            img: string;
-          }) => (
+        {data &&
+          data.pokemons.map((pokemon: PokemonsRequest) => (
             <PokemonCard
               key={pokemon.id}
               name={pokemon.name[0].toUpperCase() + pokemon.name.slice(1)}
@@ -55,8 +57,7 @@ const Pokedex = () => {
               types={pokemon.types}
               image={pokemon.img}
             />
-          ),
-        )}
+          ))}
       </div>
     </>
   );

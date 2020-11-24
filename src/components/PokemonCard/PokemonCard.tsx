@@ -1,6 +1,10 @@
 import React from 'react';
 
+import cn from 'classnames';
+
 import style from './PokemonCard.module.scss';
+
+import notFound from './assets/img/HddtBOT.png';
 
 interface IPokemonCardProps {
   name: string;
@@ -27,14 +31,20 @@ const PokemonCard: React.FC<IPokemonCardProps> = ({ name, attack, defense, types
         </div>
         <div className={style.labelWrap}>
           {types.map((type) => (
-            <span key={type} className={style.label} style={{ background: '#f28f16' }}>
+            // @ts-ignore
+            <span key={type} className={cn(style.label, style[type])}>
               {type}
             </span>
           ))}
         </div>
       </div>
-      <div className={style.pictureWrap} style={{ background: 'linear-gradient(270deg, #b33327 0.15%, #d93e30 100%)' }}>
-        <img src={image} alt={name} />
+      <div
+        className={cn(
+          // @ts-ignore
+          style.pictureWrap,
+          style[types[0]],
+        )}>
+        <img src={image || notFound} alt={name} />
       </div>
     </div>
   );

@@ -107,3 +107,48 @@
   justify-content: flex-start;
   align-items: center;
 }
+
+.regular {
+  background: gray;
+}
+
+.electric {
+  background: #f7c545;
+}
+
+.ground {
+  background: #9b897b;
+}
+
+.poison,
+.psychic,
+.fairy,
+.ghost {
+  background: #a974bc;
+}
+
+.water,
+.ice {
+  background: #a2cff0;
+}
+
+.normal {
+  background: #76aadb;
+}
+
+.fire,
+.flying,
+.dragon {
+  background: #f76545;
+}
+
+.grass,
+.bug {
+  background: #70a83b;
+}
+
+.stile,
+.dark,
+.rock {
+  background: #a1a1a1;
+}
