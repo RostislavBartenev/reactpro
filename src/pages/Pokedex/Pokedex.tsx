@@ -51,7 +51,7 @@ const Pokedex = () => {
           data.pokemons.map((pokemon: PokemonsRequest) => (
             <PokemonCard
               key={pokemon.id}
-              name={pokemon.name[0].toUpperCase() + pokemon.name.slice(1)}
+              name={pokemon.name}
               attack={pokemon.stats.attack}
               defense={pokemon.stats.defense}
               types={pokemon.types}
