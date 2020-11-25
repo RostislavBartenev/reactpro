@@ -1,6 +1,11 @@
 import React from 'react';
 
+import cn from 'classnames';
+
 import style from './PokemonCard.module.scss';
+
+import notFound from './assets/img/HddtBOT.png';
+import toCapitalizeFirstLetter from '../../utils/toCapitalizeFirstLetter';
 
 interface IPokemonCardProps {
   name: string;
@@ -14,7 +19,7 @@ const PokemonCard: React.FC<IPokemonCardProps> = ({ name, attack, defense, types
   return (
     <div className={style.root}>
       <div className={style.infoWrap}>
-        <h3 className={style.titleName}>{name}</h3>
+        <h3 className={style.titleName}>{toCapitalizeFirstLetter(name)}</h3>
         <div className={style.statWrap}>
           <div className={style.statItem}>
             <div className={style.statValue}>{attack}</div>
@@ -27,14 +32,20 @@ const PokemonCard: React.FC<IPokemonCardProps> = ({ name, attack, defense, types
         </div>
         <div className={style.labelWrap}>
           {types.map((type) => (
-            <span key={type} className={style.label} style={{ background: '#f28f16' }}>
-              {type}
+            // @ts-ignore
+            <span key={type} className={cn(style.label, style[type])}>
+              {toCapitalizeFirstLetter(type)}
             </span>
           ))}
         </div>
       </div>
-      <div className={style.pictureWrap} style={{ background: 'linear-gradient(270deg, #b33327 0.15%, #d93e30 100%)' }}>
-        <img src={image} alt={name} />
+      <div
+        className={cn(
+          style.pictureWrap,
+          // @ts-ignore
+          style[types[0]],
+        )}>
+        <img src={image || notFound} alt={name} />
       </div>
     </div>
   );
